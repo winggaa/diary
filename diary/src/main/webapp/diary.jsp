@@ -51,7 +51,7 @@
 	int tMonth = target.get(Calendar.MONTH);
 		
 	int yoNum = target.get(Calendar.DAY_OF_WEEK); // 일:1, 월:2, .....토:7
-	System.out.println(yoNum);
+	
 	// 시작공백의 개수: 일요일 공백이 없음 월요일은 1칸, 화요일은 2칸 ~~~` 
 	int startBlank = yoNum -1;
 	int lastDate = target.getActualMaximum(Calendar.DATE);
@@ -67,7 +67,7 @@
 	stmt2 = conn.prepareStatement(sql2);
 	stmt2.setInt(1, tYear);
 	stmt2.setInt(2, tMonth + 1);
-	System.out.println(stmt2);
+	
 	
 	rs2 = stmt2.executeQuery();
 	
@@ -144,6 +144,36 @@
 	a:active 	{color:black; 	text-decoration:none;}
 	a:visited 	{color:black; 	text-decoration:none;}
 	a:hover 	{color:black; 	text-decoration:none;}
+	
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  
+}
+
+li {
+  float: left;
+ 
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+  
+}
+
+.active {
+  
+}
 	</style>
 	
 	
@@ -154,13 +184,15 @@
 	<div class="container" style="height:900px; ">
 	
 	<h1>일기장</h1>
-	<a href="/diary/diary.jsp">다이어리 모양으로 보기</a>
-	<a href="/diary/diaryList.jsp">게시판 모양으로 보기</a>
-	<div>
-	 
-		<h2><a href="/diary/logout.jsp" role="button">로그아웃</a>
-		<a href="./addDiaryForm.jsp" role="button">글생성</a></h2>
-	</div>
+	<h2>
+	<ul>
+  <li><a href="/diary/diary.jsp">diary</a></li>
+  <li><a href="/diary/diaryList.jsp">board</a></li>
+  <li><a href="/diary/logout.jsp" role="button">logout</a></li>
+  <li><a href="./addDiaryForm.jsp" role="button">create</a></li>
+  </ul>
+	</h2>
+	
 	
 	
 	<!--                      캘린더 작업 부분 -->
