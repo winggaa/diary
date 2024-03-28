@@ -40,12 +40,64 @@
 	
 	System.out.println(stmt2);
 	rs2 = stmt2.executeQuery();
-	if(rs2.next()){
-		// 이날짜 일기 기록 불가능 (이미존재)
-		response.sendRedirect("/diary/addDiaryForm.jsp?checkDate="+checkDate+"&ck=F");
-	} 
-	else {
-		// 이날짜 일기 기록가능
-		response.sendRedirect("/diary/addDiaryForm.jsp?checkDate="+checkDate+"&ck=T");
+	int row = rs2.getRow();
+	System.out.println(row + "rs2입니다");
+	if(checkDate != null){
+		if(rs2.next()){
+			// 이날짜 일기 기록 불가능 (이미존재)
+			response.sendRedirect("/diary/addDiaryForm.jsp?checkDate="+checkDate+"&ck=F");
+			return;
+		} 
+		else if(row == 0){
+			// 이날짜 일기 기록가능
+			response.sendRedirect("/diary/addDiaryForm.jsp?checkDate="+checkDate+"&ck=T");
+			return;
+		}
 	}
+	
+	
+	// VoteDate
+	String checkVoteDate = request.getParameter("checkVoteDate");
+	String sql3 =  "select lunch_date lunchDate from lunch where lunch_date=?";
+	//결과가 있으면 안됨 -- 있으면 이미 이날짜에 일기가 있다는 의미 -> 이날짜로는 입력불가능해야함.
+	PreparedStatement stmt3 = null;
+	ResultSet rs3 = null;
+	stmt3 = conn.prepareStatement(sql3);
+	stmt3.setString(1,checkVoteDate);
+	rs3 = stmt3.executeQuery();
+	System.out.println(stmt3+"<--- 투표날짜");
+	int rowVote = rs3.getRow();
+	System.out.println(row + "rs3입니다");
+	rs3 = stmt3.executeQuery();
+	if(checkVoteDate != null){
+		if(rs3.next()){
+		
+			response.sendRedirect("/diary/lunchOne.jsp?checkVoteDate="+checkVoteDate+"&ck=F");
+			return;	
+		} 
+		 else {
+			// 이날짜 일기 기록가능
+			response.sendRedirect("/diary/lunchOne.jsp?checkVoteDate="+checkVoteDate+"&ck=T");
+			return;
+		} 
+	
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 %>
