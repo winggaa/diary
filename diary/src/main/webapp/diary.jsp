@@ -1,26 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import = "java.sql.*" %>
-<%@ page import="java.net.URLEncoder"%>
 <%@ page import = "java.util.*" %>
+<%@ page import= "java.net.*" %>
 <%
 
 		// 로그인 (인증)
 		// diary.login.my_session = 'OFF' --> redirect("loginForm.jsp")// 대문자로 설정해놨음
-	String sql1 = "select my_session mySession from login";
-	Class.forName("org.mariadb.jdbc.Driver");
-	Connection conn = null;
-	PreparedStatement stmt1 = null;
-	ResultSet rs1 = null;
-	conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/diary","root","java1234");
 	
-	stmt1 = conn.prepareStatement(sql1);
-	rs1 = stmt1.executeQuery();	
 	
-	String mySession = null;
-	if(rs1.next()){
-		mySession = rs1.getString("mySession");
-	}
-	if(mySession.equals("OFF")){
+	
+	String loginMember = (String)(session.getAttribute("loginMember"));
+	
+	
+	if(loginMember == null 	){
 		
 		String errMsg= URLEncoder.encode("잘못된 접근 입니다. 로그인 먼저 해주세요", "utf-8");
 		response.sendRedirect("/diary/loginForm.jsp?errMsg="+errMsg); // 겟방식으로 보낼수 있음.
@@ -33,6 +25,11 @@
 <%
 	//1. 요청 분석
 	// 출력하고자하는 달력의 년과 월값 받아오기.
+	Class.forName("org.mariadb.jdbc.Driver");
+	Connection conn = null;
+	conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/diary","root","java1234");
+	
+	
 	String targetYear = request.getParameter("targetYear");
 	String targetMonth = request.getParameter("targetMonth");
 	
@@ -190,6 +187,7 @@ li a:hover:not(.active) {
   <li><a href="/diary/diaryList.jsp">board</a></li>
   <li><a href="/diary/logout.jsp" role="button">logout</a></li>
   <li><a href="./addDiaryForm.jsp" role="button">create</a></li>
+  <li><a href="./lunchOne.jsp" role="button">lunch</a></li>
   </ul>
 	</h2>
 	

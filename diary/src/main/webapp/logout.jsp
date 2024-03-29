@@ -3,11 +3,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 
+	session.invalidate(); // 세션 공간 초기화(포맷)
+	
+	response.sendRedirect("/diary/loginForm.jsp");
+
+
 	// ON --> OFF
 	
-
+/*
 		// 로그인 (인증)
 		// diary.login.my_session = 'OFF' --> redirect("loginForm.jsp")// 대문자로 설정해놨음
+		
 	String sql1 = "select my_session mySession from login";
 	Class.forName("org.mariadb.jdbc.Driver");
 	Connection conn = null;
@@ -22,6 +28,9 @@
 	if(rs1.next()){
 		mySession = rs1.getString("mySession");
 	}
+	
+	
+                       
 	if(mySession.equals("OFF")){
 		
 		String errMsg= URLEncoder.encode("잘못된 접근 입니다. 로그인 먼저 해주세요", "utf-8");
@@ -37,5 +46,5 @@
 	
 	response.sendRedirect("/diary/loginForm.jsp");
 	
-	
+	*/
 %>
