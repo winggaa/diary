@@ -146,7 +146,7 @@ rs6 = stmt6.executeQuery();
 		    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
 		  </li>
 		</ul>
-		<div class="col-3 mt-5 bg-white border shadow p-3 mb-5 bg-body-tertiary rounded">
+		<div class="col-3 mt-5 bg-white border border border-end-0 shadow p-3 mb-5 bg-body-tertiary ">
 		<h1>statsLunch</h1>
 	<%
 	int maxHeight = 600;
@@ -193,7 +193,7 @@ rs6 = stmt6.executeQuery();
 			</tr>
 	</table>		
 		</div>
-		<div class="col-3 mt-5 bg-white border shadow p-3 mb-5 bg-body-tertiary rounded">
+		<div class="col-3 mt-5 bg-white border border border-start-0 p-3 mb-5 bg-body-tertiary ">
 		<h1 style="text-align:center;">점심투표</h1>
 		
 		<form method="get" action="./lunchOne.jsp">

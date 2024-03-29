@@ -180,7 +180,7 @@ li a:hover:not(.active) {
 
 	<div class="container" style="height:900px; ">
 	
-	<h1>일기장</h1>
+	<h1>Diary</h1>
 	<h2>
 	<ul>
   <li><a href="/diary/diary.jsp">diary</a></li>
@@ -198,7 +198,7 @@ li a:hover:not(.active) {
 	<div>
 		<h1>
 	
-		<a class="button" href="./diary.jsp?targetYear=<%=tYear%>&targetMonth=<%=tMonth-1%>">저번달</a>
+		<a class="button bg-background:black" href="./diary.jsp?targetYear=<%=tYear%>&targetMonth=<%=tMonth-1%>">저번달</a>
 		<%=tYear%>년 <%=tMonth+1%>월
 		<a class="button" href="./diary.jsp?targetYear=<%=tYear%>&targetMonth=<%=tMonth+1%>">다음달</a>
 		</h1>
