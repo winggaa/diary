@@ -71,7 +71,7 @@
 		// 로그인 실패
 		System.out.println("로그인 실패");
 		String errMsg = URLEncoder.encode("아이디와 비밀번호를 확인 해주세요", "utf-8");
-		response.sendRedirect("/diary/loginForm.jsp?errMsg="+errMsg);
+		response.sendRedirect("/emp/empLoginForm.jsp?errMsg="+errMsg);
 	}
 
 %>
